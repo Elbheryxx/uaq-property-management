@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>لوحة التحكم</title>
-    <!-- تضمين الأنماط مباشرة لتجنب مشاكل الوصول لملفات فرعية -->
+    <title>تسجيل الدخول</title>
+    <!-- تضمين الأنماط مباشرة لتجنب مشاكل الوصول لملفات فرعية عند فتح الملف محليًا -->
     <style>
 /*
  * ملف أنماط بسيط لتصميم واجهة النظام بلغة عربية من اليمين إلى اليسار.
@@ -133,37 +133,19 @@ button:hover {
     </style>
 </head>
 <body>
-    <header>
-        <h1>لوحة إدارة العقارات</h1>
-        <div id="userGreeting"></div>
-        <button onclick="logout()">خروج</button>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#" onclick="showSection('properties')">العقارات</a></li>
-            <li><a href="#" onclick="showSection('tenants')">المستأجرون</a></li>
-            <li><a href="#" onclick="showSection('maintenance')">الصيانة</a></li>
-            <li><a href="#" onclick="showSection('commissions')">العمولات</a></li>
-            <li><a href="#" onclick="showSection('users')">المستخدمون</a></li>
-            <li><a href="#" onclick="showSection('appointments')">المواعيد</a></li>
-            <li><a href="#" onclick="showSection('notifications')">الإشعارات<span id="notifCount"></span></a></li>
-            <li><a href="#" onclick="showSection('archive')">الأرشيف</a></li>
-        </ul>
-    </nav>
-    <main>
-        <section id="propertiesSection" class="section"></section>
-        <section id="tenantsSection" class="section"></section>
-        <section id="maintenanceSection" class="section"></section>
-        <section id="commissionsSection" class="section"></section>
-        <section id="usersSection" class="section"></section>
-        <section id="appointmentsSection" class="section"></section>
-        <section id="notificationsSection" class="section"></section>
-        <section id="archiveSection" class="section"></section>
-    </main>
+    <div class="container">
+        <h1>نظام إدارة العقارات</h1>
+        <form id="loginForm">
+            <label for="username">اسم المستخدم</label>
+            <input type="text" id="username" required>
+            <label for="password">كلمة المرور</label>
+            <input type="password" id="password" required>
+            <button type="submit">دخول</button>
+        </form>
+        <div id="loginError" class="error"></div>
+    </div>
     <!-- تضمين كود جافا سكريبت مباشرة لتجنب مشاكل الوصول لملفات فرعية -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
     <script src="admin.js"></script>
 </body>
 </html>
