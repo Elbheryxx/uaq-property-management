@@ -1,0 +1,143 @@
+/* Global styles for Mohamed UAQ Real Estate */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f7f7f7;
+    color: #333;
+}
+header {
+    background: #004d99;
+    color: #fff;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+}
+header .logo {
+    height: 40px;
+}
+nav {
+    background: #333;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+nav li {
+    flex: 1;
+}
+nav a {
+    display: block;
+    color: #fff;
+    padding: 0.8em;
+    text-decoration: none;
+    text-align: center;
+}
+nav a:hover {
+    background: #555;
+}
+main, section {
+    padding: 1em;
+}
+#propertiesList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+.container {
+    max-width: 400px;
+    margin: 5em auto;
+    padding: 2em;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+form label {
+    display: block;
+    margin: 1em 0 0.3em;
+}
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+button, .button {
+    background: #004d99;
+    color: #fff;
+    border: none;
+    padding: 0.7em 1.5em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+}
+button:hover, .button:hover {
+    background: #003366;
+}
+.property {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 0.5em;
+    width: 300px;
+    box-sizing: border-box;
+}
+.property img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+.rating .star {
+    cursor: pointer;
+    color: #ccc;
+    font-size: 1.2em;
+}
+.rating .star.filled {
+    color: gold;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+    background: #fff;
+}
+.table th,
+.table td {
+    border: 1px solid #ccc;
+    padding: 0.5em;
+    text-align: center;
+}
+.table th {
+    background: #eee;
+}
+footer {
+    background: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+footer a {
+    color: #fff;
+    margin: 0 0.5em;
+    text-decoration: none;
+}
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+    }
+    nav li {
+        flex: none;
+    }
+    .property {
+        width: 100%;
+    }
+}

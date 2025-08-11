@@ -2,660 +2,86 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>تسجيل الدخول</title>
-    <!-- تضمين الأنماط مباشرة لتجنب مشاكل الوصول لملفات فرعية عند فتح الملف محليًا -->
-    <style>
-/*
- * ملف أنماط بسيط لتصميم واجهة النظام بلغة عربية من اليمين إلى اليسار.
- */
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-    direction: rtl;
-    text-align: right;
-}
-
-header {
-    background: #004d99;
-    color: #fff;
-    padding: 1em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav {
-    background: #333;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-nav li {
-    flex: 1;
-}
-
-nav a {
-    color: #fff;
-    display: block;
-    padding: 0.8em;
-    text-decoration: none;
-    text-align: center;
-}
-
-nav a:hover {
-    background: #555;
-}
-
-.container {
-    max-width: 400px;
-    margin: 5em auto;
-    padding: 2em;
-    background: #fff;
-    border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-form label {
-    display: block;
-    margin: 1em 0 0.3em;
-}
-
-form input,
-form select,
-form textarea {
-    width: 100%;
-    padding: 0.5em;
-    margin-bottom: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button {
-    background: #004d99;
-    color: #fff;
-    border: none;
-    padding: 0.7em 1.5em;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-button:hover {
-    background: #003366;
-}
-
-.error {
-    color: red;
-    margin-top: 1em;
-}
-
-.section {
-    display: none;
-    padding: 1em;
-}
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1em;
-    background: #fff;
-}
-
-.table th,
-.table td {
-    border: 1px solid #ccc;
-    padding: 0.5em;
-    text-align: center;
-}
-
-.table th {
-    background: #eee;
-}
-
-/* Responsive styles */
-@media (max-width: 600px) {
-    nav ul {
-        flex-direction: column;
-    }
-    nav li {
-        flex: none;
-    }
-}
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمد المستشار العقاري</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>نظام إدارة العقارات</h1>
-        <form id="loginForm">
-            <label for="username">اسم المستخدم</label>
-            <input type="text" id="username" required>
-            <label for="password">كلمة المرور</label>
-            <input type="password" id="password" required>
-            <button type="submit">دخول</button>
+    <header>
+        <img src="logo.svg" alt="شعار محمد UAQ" class="logo">
+        <h1 data-i18n="title">محمد المستشار العقاري</h1>
+        <button id="langToggle">EN</button>
+    </header>
+
+    <section id="about">
+        <h2 data-i18n="aboutTitle">من أنا</h2>
+        <p data-i18n="aboutText">أنا محمد، مستشار عقاري بخبرة تزيد عن 7 سنوات في أم القيوين وأقدم جميع الخدمات العقارية.</p>
+    </section>
+
+    <section id="services">
+        <h2 data-i18n="servicesTitle">الخدمات</h2>
+        <ul>
+            <li data-i18n="service1">إدارة وتأجير جميع أنواع العقارات</li>
+            <li data-i18n="service2">استشارات عقارية متكاملة</li>
+        </ul>
+    </section>
+
+    <section id="properties">
+        <h2 data-i18n="propertiesTitle">العقارات المتاحة</h2>
+        <input id="searchInput" placeholder="بحث" data-i18n-placeholder="searchPlaceholder">
+        <select id="typeFilter">
+            <option value="" data-i18n="all">الكل</option>
+            <option value="شقة" data-i18n="apt">شقق</option>
+            <option value="فيلا" data-i18n="villa">فلل</option>
+            <option value="أرض" data-i18n="land">أراضٍ</option>
+            <option value="محل" data-i18n="shop">محلات</option>
+        </select>
+        <div id="propertiesList"></div>
+    </section>
+
+    <section id="booking">
+        <h2 data-i18n="bookTitle">حجز موعد</h2>
+        <form id="bookingForm">
+            <label data-i18n="bookName">الاسم</label>
+            <input type="text" id="bookName" required>
+            <label data-i18n="bookPhone">الهاتف</label>
+            <input type="text" id="bookPhone" required>
+            <label data-i18n="bookProperty">العقار</label>
+            <select id="bookProperty"></select>
+            <label data-i18n="bookDate">التاريخ</label>
+            <input type="date" id="bookDate" required>
+            <button type="submit" data-i18n="bookSubmit">إرسال</button>
         </form>
-        <div id="loginError" class="error"></div>
-    </div>
-    <!-- تضمين كود جافا سكريبت مباشرة لتجنب مشاكل الوصول لملفات فرعية -->
-    <script>
-// تطبيق إدارة العقارات والعمولات
+    </section>
 
-/*
- * هذا الملف يحتوى على وظائف جافا سكريبت الخاصة بالتحقق من المستخدمين
- * وإدارة البيانات الخاصة بالعقارات والمستأجرين والصيانة والعمولات.
- * يتم تخزين البيانات فى localStorage لسهولة التجربة دون حاجة لقاعدة بيانات خلفية.
- */
+    <section id="testimonials">
+        <h2 data-i18n="testimonialsTitle">شهادات العملاء</h2>
+        <p>"خدمة ممتازة وسريعة" - أحمد</p>
+        <p>"أفضل مستشار عقاري في أم القيوين" - فاطمة</p>
+    </section>
 
-/* --------------------------------------------------------------
- * تهيئة البيانات الافتراضية إذا لم تكن موجودة فى localStorage
- */
-function initDefaultData() {
-    // إنشاء مستخدم مدير افتراضى إذا لم يكن هناك مستخدمون
-    if (!localStorage.getItem('users')) {
-        const defaultUsers = [
-            { username: 'vipmedo', password: 'nona1995', role: 'admin' }
-        ];
-        localStorage.setItem('users', JSON.stringify(defaultUsers));
-    }
-    // مصفوفات البيانات الأساسية
-    if (!localStorage.getItem('properties')) localStorage.setItem('properties', '[]');
-    if (!localStorage.getItem('tenants')) localStorage.setItem('tenants', '[]');
-    if (!localStorage.getItem('maintenance')) localStorage.setItem('maintenance', '[]');
-    if (!localStorage.getItem('commissions')) localStorage.setItem('commissions', '[]');
-}
+    <section id="faq">
+        <h2 data-i18n="faqTitle">الأسئلة الشائعة</h2>
+        <p><a href="faq.html" data-i18n="faqLink">الأسئلة الشائعة</a></p>
+    </section>
 
-/* --------------------------------------------------------------
- * صفحة تسجيل الدخول
- */
-if (document.getElementById('loginForm')) {
-    // تهيئة البيانات الافتراضية عند تحميل صفحة الدخول
-    initDefaultData();
-    document.getElementById('loginForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value;
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const user = users.find(u => u.username === username && u.password === password);
-        if (user) {
-            sessionStorage.setItem('currentUser', JSON.stringify(user));
-            window.location.href = 'dashboard.html';
-        } else {
-            document.getElementById('loginError').innerText = 'اسم المستخدم أو كلمة المرور غير صحيحة';
-        }
-    });
-}
+    <section id="contact">
+        <h2 data-i18n="contactTitle">تواصل معي</h2>
+        <a class="button call" href="tel:0508911211" data-i18n="call">اتصل الآن</a>
+        <a class="button whatsapp" href="https://wa.me/971508911211">واتساب</a>
+        <p>info@mohameduaqrealestate.com</p>
+    </section>
 
-/* --------------------------------------------------------------
- * صفحة لوحة التحكم
- * هذا القسم موجود أيضاً هنا لأننا نضمّن الملف فى كل الصفحات.
- * الكود يتحقق من عناصر الصفحة قبل العمل.
- */
-if (document.getElementById('userGreeting')) {
-    // عند تحميل لوحة التحكم، تحقق من تسجيل الدخول وقم بتهيئة البيانات
-    initDefaultData();
-    const userJSON = sessionStorage.getItem('currentUser');
-    if (!userJSON) {
-        // إذا لم يكن هناك مستخدم مسجل، العودة لصفحة الدخول
-        window.location.href = 'login.html';
-    }
-    const currentUser = JSON.parse(userJSON);
-    document.getElementById('userGreeting').innerText = `مرحبًا، ${currentUser.username}`;
+    <section id="map">
+        <h2 data-i18n="mapTitle">موقعي</h2>
+        <iframe src="https://www.google.com/maps?q=Umm%20Al%20Quwain&output=embed" width="100%" height="300" style="border:0;"></iframe>
+    </section>
 
-    // تحميل البيانات من localStorage إلى متغيرات عالمية
-    let users = JSON.parse(localStorage.getItem('users')) || [];
-    let properties = JSON.parse(localStorage.getItem('properties')) || [];
-    let tenants = JSON.parse(localStorage.getItem('tenants')) || [];
-    let maintenanceList = JSON.parse(localStorage.getItem('maintenance')) || [];
-    let commissions = JSON.parse(localStorage.getItem('commissions')) || [];
+    <footer>
+        <a href="privacy.html" data-i18n="privacyLink">سياسة الخصوصية</a>
+        <a href="login.html">دخول المشرف</a>
+    </footer>
 
-    // وظائف مساعدة لحفظ البيانات
-    function saveAll() {
-        localStorage.setItem('users', JSON.stringify(users));
-        localStorage.setItem('properties', JSON.stringify(properties));
-        localStorage.setItem('tenants', JSON.stringify(tenants));
-        localStorage.setItem('maintenance', JSON.stringify(maintenanceList));
-        localStorage.setItem('commissions', JSON.stringify(commissions));
-    }
-
-    // إظهار قسم معين وإخفاء الباقى
-    window.showSection = function (name) {
-        const sectionIds = ['properties', 'tenants', 'maintenance', 'commissions', 'users'];
-        sectionIds.forEach(section => {
-            const secEl = document.getElementById(section + 'Section');
-            if (secEl) {
-                secEl.style.display = (section === name) ? 'block' : 'none';
-            }
-        });
-        switch (name) {
-            case 'properties':
-                renderProperties();
-                break;
-            case 'tenants':
-                renderTenants();
-                break;
-            case 'maintenance':
-                renderMaintenance();
-                break;
-            case 'commissions':
-                renderCommissions();
-                break;
-            case 'users':
-                renderUsers();
-                break;
-        }
-    };
-
-    // عمليات تسجيل الخروج
-    window.logout = function () {
-        sessionStorage.removeItem('currentUser');
-        window.location.href = 'login.html';
-    };
-
-    /* ----------------------------------------------------------
-     * قسم العقارات
-     */
-    function renderProperties() {
-        const section = document.getElementById('propertiesSection');
-        let html = '<h2>العقارات</h2>';
-        html += '<form id="propertyForm">';
-        html += '<input type="hidden" id="propertyIndex">';
-        html += '<label>اسم المالك</label><input type="text" id="propertyOwner" required>';
-        html += '<label>اسم/عنوان العقار</label><input type="text" id="propertyName" required>';
-        html += '<label>نوع العقار</label><select id="propertyType">';
-        html += '<option value="سكني">سكني</option><option value="تجاري">تجاري</option><option value="أخرى">أخرى</option>';
-        html += '</select>';
-        html += '<label>الوصف</label><textarea id="propertyDescription"></textarea>';
-        html += '<button type="submit">حفظ</button>';
-        html += '</form>';
-        html += '<table class="table"><thead><tr><th>المالك</th><th>العقار</th><th>النوع</th><th>الوصف</th><th>إجراءات</th></tr></thead><tbody id="propertiesTable"></tbody></table>';
-        section.innerHTML = html;
-        // تعيين الأحداث
-        document.getElementById('propertyForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const idx = document.getElementById('propertyIndex').value;
-            const owner = document.getElementById('propertyOwner').value.trim();
-            const name = document.getElementById('propertyName').value.trim();
-            const type = document.getElementById('propertyType').value;
-            const description = document.getElementById('propertyDescription').value.trim();
-            if (idx === '') {
-                // إضافة جديد
-                properties.push({ owner, name, type, description });
-            } else {
-                // تحديث
-                properties[idx] = { owner, name, type, description };
-            }
-            saveAll();
-            renderProperties();
-        });
-        // عرض الصفوف
-        const tbody = document.getElementById('propertiesTable');
-        tbody.innerHTML = '';
-        properties.forEach((prop, index) => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${prop.owner}</td><td>${prop.name}</td><td>${prop.type}</td><td>${prop.description || ''}</td>` +
-                `<td><button onclick="editProperty(${index})">تعديل</button> <button onclick="deleteProperty(${index})">حذف</button></td>`;
-            tbody.appendChild(tr);
-        });
-    }
-
-    // تعديل عقار
-    window.editProperty = function (index) {
-        const prop = properties[index];
-        document.getElementById('propertyIndex').value = index;
-        document.getElementById('propertyOwner').value = prop.owner;
-        document.getElementById('propertyName').value = prop.name;
-        document.getElementById('propertyType').value = prop.type;
-        document.getElementById('propertyDescription').value = prop.description || '';
-    };
-
-    // حذف عقار
-    window.deleteProperty = function (index) {
-        if (!confirm('هل أنت متأكد من حذف هذا العقار؟')) return;
-        // عند حذف عقار قم بحذف المستأجرين وطلبات الصيانة والعمولات المرتبطة به
-        const prop = properties[index];
-        properties.splice(index, 1);
-        // حذف المستأجرين المرتبطين
-        tenants = tenants.filter(t => t.propertyName !== prop.name);
-        // حذف الصيانة المرتبطة
-        maintenanceList = maintenanceList.filter(m => m.propertyName !== prop.name);
-        // حذف العمولات المرتبطة
-        commissions = commissions.filter(c => c.propertyName !== prop.name);
-        saveAll();
-        renderProperties();
-    };
-
-    /* ----------------------------------------------------------
-     * قسم المستأجرين
-     */
-    function renderTenants() {
-        const section = document.getElementById('tenantsSection');
-        let html = '<h2>المستأجرون</h2>';
-        html += '<form id="tenantForm">';
-        html += '<input type="hidden" id="tenantIndex">';
-        html += '<label>العقار</label><select id="tenantPropertyName" required>';
-        html += '<option value="" disabled selected>اختر عقاراً</option>';
-        properties.forEach(p => {
-            html += `<option value="${p.name}">${p.name}</option>`;
-        });
-        html += '</select>';
-        html += '<label>اسم المستأجر</label><input type="text" id="tenantName" required>';
-        html += '<label>رقم الهاتف</label><input type="text" id="tenantPhone" required>';
-        html += '<label>تاريخ بداية العقد</label><input type="date" id="leaseStart" required>';
-        html += '<label>تاريخ نهاية العقد</label><input type="date" id="leaseEnd" required>';
-        html += '<label>قيمة الإيجار (شهرياً)</label><input type="number" id="rentAmount" step="0.01" required>';
-        html += '<button type="submit">حفظ</button>';
-        html += '</form>';
-        html += '<table class="table"><thead><tr><th>العقار</th><th>المستأجر</th><th>الهاتف</th><th>بداية العقد</th><th>نهاية العقد</th><th>الإيجار الشهري</th><th>إجراءات</th></tr></thead><tbody id="tenantsTable"></tbody></table>';
-        section.innerHTML = html;
-        // تعيين الحدث
-        document.getElementById('tenantForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const idx = document.getElementById('tenantIndex').value;
-            const propertyName = document.getElementById('tenantPropertyName').value;
-            const name = document.getElementById('tenantName').value.trim();
-            const phone = document.getElementById('tenantPhone').value.trim();
-            const leaseStart = document.getElementById('leaseStart').value;
-            const leaseEnd = document.getElementById('leaseEnd').value;
-            const rentAmount = parseFloat(document.getElementById('rentAmount').value);
-            if (idx === '') {
-                tenants.push({ propertyName, name, phone, leaseStart, leaseEnd, rentAmount });
-            } else {
-                tenants[idx] = { propertyName, name, phone, leaseStart, leaseEnd, rentAmount };
-            }
-            saveAll();
-            renderTenants();
-        });
-        // عرض الجدول
-        const tbody = document.getElementById('tenantsTable');
-        tbody.innerHTML = '';
-        tenants.forEach((tenant, index) => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${tenant.propertyName}</td><td>${tenant.name}</td><td>${tenant.phone}</td>` +
-                `<td>${tenant.leaseStart}</td><td>${tenant.leaseEnd}</td><td>${tenant.rentAmount}</td>` +
-                `<td><button onclick="editTenant(${index})">تعديل</button> <button onclick="deleteTenant(${index})">حذف</button></td>`;
-            tbody.appendChild(tr);
-        });
-    }
-
-    // تعديل مستأجر
-    window.editTenant = function (index) {
-        const tenant = tenants[index];
-        document.getElementById('tenantIndex').value = index;
-        document.getElementById('tenantPropertyName').value = tenant.propertyName;
-        document.getElementById('tenantName').value = tenant.name;
-        document.getElementById('tenantPhone').value = tenant.phone;
-        document.getElementById('leaseStart').value = tenant.leaseStart;
-        document.getElementById('leaseEnd').value = tenant.leaseEnd;
-        document.getElementById('rentAmount').value = tenant.rentAmount;
-    };
-
-    // حذف مستأجر
-    window.deleteTenant = function (index) {
-        if (!confirm('هل أنت متأكد من حذف هذا المستأجر؟')) return;
-        tenants.splice(index, 1);
-        saveAll();
-        renderTenants();
-    };
-
-    /* ----------------------------------------------------------
-     * قسم الصيانة
-     */
-    function renderMaintenance() {
-        const section = document.getElementById('maintenanceSection');
-        let html = '<h2>طلبات الصيانة</h2>';
-        html += '<form id="maintenanceForm">';
-        html += '<input type="hidden" id="maintenanceIndex">';
-        html += '<label>العقار</label><select id="maintenancePropertyName" required>';
-        html += '<option value="" disabled selected>اختر عقاراً</option>';
-        properties.forEach(p => {
-            html += `<option value="${p.name}">${p.name}</option>`;
-        });
-        html += '</select>';
-        html += '<label>الوصف</label><textarea id="maintenanceDescription" required></textarea>';
-        html += '<label>تاريخ الطلب</label><input type="date" id="maintenanceDate" required>';
-        html += '<label>الحالة</label><select id="maintenanceStatus">';
-        html += '<option value="قيد التنفيذ">قيد التنفيذ</option><option value="مغلقة">مغلقة</option>';
-        html += '</select>';
-        // إذا كان المستخدم مديراً يمكنه تعيين المهمة لأحد الموظفين
-        if (currentUser.role === 'admin') {
-            html += '<label>تعيين إلى</label><select id="maintenanceAssignedTo">';
-            html += '<option value="">-- غير معين --</option>';
-            users.forEach(u => {
-                if (u.role !== 'admin') html += `<option value="${u.username}">${u.username}</option>`;
-            });
-            html += '</select>';
-        }
-        html += '<button type="submit">حفظ</button>';
-        html += '</form>';
-        html += '<table class="table"><thead><tr><th>العقار</th><th>الوصف</th><th>التاريخ</th><th>الحالة</th><th>المعين</th><th>إجراءات</th></tr></thead><tbody id="maintenanceTable"></tbody></table>';
-        section.innerHTML = html;
-        document.getElementById('maintenanceForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const idx = document.getElementById('maintenanceIndex').value;
-            const propertyName = document.getElementById('maintenancePropertyName').value;
-            const description = document.getElementById('maintenanceDescription').value.trim();
-            const date = document.getElementById('maintenanceDate').value;
-            const status = document.getElementById('maintenanceStatus').value;
-            let assignedTo = '';
-            if (currentUser.role === 'admin') {
-                const assignSelect = document.getElementById('maintenanceAssignedTo');
-                assignedTo = assignSelect ? assignSelect.value : '';
-            } else {
-                assignedTo = currentUser.username;
-            }
-            if (idx === '') {
-                maintenanceList.push({ propertyName, description, date, status, assignedTo });
-            } else {
-                maintenanceList[idx] = { propertyName, description, date, status, assignedTo };
-            }
-            saveAll();
-            renderMaintenance();
-        });
-        // عرض الجدول
-        const tbody = document.getElementById('maintenanceTable');
-        tbody.innerHTML = '';
-        maintenanceList.forEach((req, index) => {
-            // يمكن للموظف رؤية الطلبات الخاصة به فقط، أما المدير فيرى جميع الطلبات
-            if (currentUser.role !== 'admin' && req.assignedTo && req.assignedTo !== currentUser.username) return;
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${req.propertyName}</td><td>${req.description}</td><td>${req.date}</td><td>${req.status}</td><td>${req.assignedTo || ''}</td>` +
-                `<td><button onclick="editMaintenance(${index})">تعديل</button> <button onclick="deleteMaintenance(${index})">حذف</button></td>`;
-            tbody.appendChild(tr);
-        });
-    }
-
-    // تعديل طلب صيانة
-    window.editMaintenance = function (index) {
-        const req = maintenanceList[index];
-        // إذا كان الموظف غير مسموح له بتعديل طلب ليس له، تجاهل
-        if (currentUser.role !== 'admin' && req.assignedTo !== currentUser.username) return;
-        document.getElementById('maintenanceIndex').value = index;
-        document.getElementById('maintenancePropertyName').value = req.propertyName;
-        document.getElementById('maintenanceDescription').value = req.description;
-        document.getElementById('maintenanceDate').value = req.date;
-        document.getElementById('maintenanceStatus').value = req.status;
-        if (currentUser.role === 'admin' && document.getElementById('maintenanceAssignedTo')) {
-            document.getElementById('maintenanceAssignedTo').value = req.assignedTo || '';
-        }
-    };
-
-    // حذف طلب صيانة
-    window.deleteMaintenance = function (index) {
-        const req = maintenanceList[index];
-        if (currentUser.role !== 'admin' && req.assignedTo !== currentUser.username) return;
-        if (!confirm('هل أنت متأكد من حذف طلب الصيانة؟')) return;
-        maintenanceList.splice(index, 1);
-        saveAll();
-        renderMaintenance();
-    };
-
-    /* ----------------------------------------------------------
-     * قسم العمولات
-     */
-    function renderCommissions() {
-        const section = document.getElementById('commissionsSection');
-        let html = '<h2>العمولات</h2>';
-        html += '<form id="commissionForm">';
-        html += '<input type="hidden" id="commissionIndex">';
-        html += '<label>نوع العملية</label><select id="commissionType">';
-        html += '<option value="تأجير">تأجير</option><option value="بيع">بيع</option><option value="شراء">شراء</option>';
-        html += '</select>';
-        html += '<label>العقار (اختياري)</label><select id="commissionPropertyName">';
-        html += '<option value="">-- لا يوجد --</option>';
-        properties.forEach(p => {
-            html += `<option value="${p.name}">${p.name}</option>`;
-        });
-        html += '</select>';
-        html += '<label>المبلغ</label><input type="number" id="commissionAmount" step="0.01" required>';
-        html += '<label>نسبة العمولة (%)</label><input type="number" id="commissionPercentage" step="0.01" required>';
-        html += '<label>الموظف</label><select id="commissionEmployee">';
-        users.forEach(u => {
-            if (u.role !== 'admin') html += `<option value="${u.username}">${u.username}</option>`;
-        });
-        html += '</select>';
-        html += '<label>تاريخ العملية</label><input type="date" id="commissionDate" required>';
-        html += '<button type="submit">حفظ</button>';
-        html += '</form>';
-        html += '<table class="table"><thead><tr><th>النوع</th><th>العقار</th><th>المبلغ</th><th>النسبة</th><th>العمولة</th><th>الموظف</th><th>التاريخ</th><th>إجراءات</th></tr></thead><tbody id="commissionsTable"></tbody></table>';
-        section.innerHTML = html;
-        document.getElementById('commissionForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const idx = document.getElementById('commissionIndex').value;
-            const type = document.getElementById('commissionType').value;
-            const propertyName = document.getElementById('commissionPropertyName').value;
-            const amount = parseFloat(document.getElementById('commissionAmount').value);
-            const percentage = parseFloat(document.getElementById('commissionPercentage').value);
-            const employee = document.getElementById('commissionEmployee').value;
-            const date = document.getElementById('commissionDate').value;
-            const commissionValue = amount * (percentage / 100);
-            if (idx === '') {
-                commissions.push({ type, propertyName, amount, percentage, commissionValue, employee, date });
-            } else {
-                commissions[idx] = { type, propertyName, amount, percentage, commissionValue, employee, date };
-            }
-            saveAll();
-            renderCommissions();
-        });
-        const tbody = document.getElementById('commissionsTable');
-        tbody.innerHTML = '';
-        commissions.forEach((com, index) => {
-            // الموظف يرى العمولات الخاصة به فقط، أما المدير فيرى الجميع
-            if (currentUser.role !== 'admin' && com.employee !== currentUser.username) return;
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${com.type}</td><td>${com.propertyName || ''}</td><td>${com.amount}</td>` +
-                `<td>${com.percentage}%</td><td>${com.commissionValue.toFixed(2)}</td>` +
-                `<td>${com.employee}</td><td>${com.date}</td>` +
-                `<td><button onclick="editCommission(${index})">تعديل</button> <button onclick="deleteCommission(${index})">حذف</button></td>`;
-            tbody.appendChild(tr);
-        });
-    }
-
-    // تعديل عمولة
-    window.editCommission = function (index) {
-        const com = commissions[index];
-        // إذا كان الموظف غير مدير ولا يملك هذا السجل، لا يسمح بالتعديل
-        if (currentUser.role !== 'admin' && com.employee !== currentUser.username) return;
-        document.getElementById('commissionIndex').value = index;
-        document.getElementById('commissionType').value = com.type;
-        document.getElementById('commissionPropertyName').value = com.propertyName;
-        document.getElementById('commissionAmount').value = com.amount;
-        document.getElementById('commissionPercentage').value = com.percentage;
-        document.getElementById('commissionEmployee').value = com.employee;
-        document.getElementById('commissionDate').value = com.date;
-    };
-
-    // حذف عمولة
-    window.deleteCommission = function (index) {
-        const com = commissions[index];
-        if (currentUser.role !== 'admin' && com.employee !== currentUser.username) return;
-        if (!confirm('هل أنت متأكد من حذف سجل العمولة؟')) return;
-        commissions.splice(index, 1);
-        saveAll();
-        renderCommissions();
-    };
-
-    /* ----------------------------------------------------------
-     * قسم المستخدمين (للمدير فقط)
-     */
-    function renderUsers() {
-        const section = document.getElementById('usersSection');
-        if (currentUser.role !== 'admin') {
-            // إذا لم يكن مديراً، إخفاء هذا القسم
-            section.innerHTML = '<p>لا تملك صلاحية الوصول إلى هذا القسم.</p>';
-            return;
-        }
-        let html = '<h2>المستخدمون</h2>';
-        html += '<form id="userForm">';
-        html += '<input type="hidden" id="userIndex">';
-        html += '<label>اسم المستخدم</label><input type="text" id="newUsername" required>';
-        html += '<label>كلمة المرور</label><input type="password" id="newPassword" required>';
-        html += '<label>الدور</label><select id="newRole">';
-        html += '<option value="employee">موظف</option><option value="admin">مدير</option>';
-        html += '</select>';
-        html += '<button type="submit">حفظ</button>';
-        html += '</form>';
-        html += '<table class="table"><thead><tr><th>اسم المستخدم</th><th>الدور</th><th>إجراءات</th></tr></thead><tbody id="usersTable"></tbody></table>';
-        section.innerHTML = html;
-        document.getElementById('userForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const idx = document.getElementById('userIndex').value;
-            const username = document.getElementById('newUsername').value.trim();
-            const password = document.getElementById('newPassword').value;
-            const role = document.getElementById('newRole').value;
-            if (idx === '') {
-                // التأكد من عدم تكرار اسم المستخدم
-                if (users.find(u => u.username === username)) {
-                    alert('اسم المستخدم موجود بالفعل');
-                    return;
-                }
-                users.push({ username, password, role });
-            } else {
-                // تحديث مستخدم
-                users[idx] = { username, password, role };
-            }
-            saveAll();
-            renderUsers();
-        });
-        // عرض جدول المستخدمين
-        const tbody = document.getElementById('usersTable');
-        tbody.innerHTML = '';
-        users.forEach((user, index) => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${user.username}</td><td>${user.role === 'admin' ? 'مدير' : 'موظف'}</td>` +
-                `<td>${user.username !== currentUser.username ? `<button onclick=\"editUser(${index})\">تعديل</button> <button onclick=\"deleteUser(${index})\">حذف</button>` : ''}</td>`;
-            tbody.appendChild(tr);
-        });
-    }
-
-    // تعديل مستخدم
-    window.editUser = function (index) {
-        const user = users[index];
-        document.getElementById('userIndex').value = index;
-        document.getElementById('newUsername').value = user.username;
-        document.getElementById('newPassword').value = user.password;
-        document.getElementById('newRole').value = user.role;
-    };
-
-    // حذف مستخدم
-    window.deleteUser = function (index) {
-        if (users[index].username === currentUser.username) return;
-        if (!confirm('هل أنت متأكد من حذف هذا المستخدم؟')) return;
-        users.splice(index, 1);
-        saveAll();
-        renderUsers();
-    };
-
-    // عند فتح لوحة التحكم لأول مرة، عرض قسم العقارات افتراضياً
-    showSection('properties');
-}
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
