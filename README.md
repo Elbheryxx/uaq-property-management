@@ -1,2 +1,3 @@
-# uaq-property-management
-Property management system for Mohamed Uaq Real Estate.
+# UAQ Property Management
+
+Project reinitialized from scratch.

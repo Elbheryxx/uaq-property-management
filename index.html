@@ -1,99 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محمد المستشار العقاري</title>
-    <style>
-        body {font-family: Arial, sans-serif; margin:0; padding:0; direction: rtl; text-align:right;}
-        header {background:#004d99; color:#fff; padding:1em; display:flex; justify-content:space-between; align-items:center;}
-        nav a {color:#fff; margin-left:1em; text-decoration:none;}
-        section {padding:1em;}
-        #propertiesList {display:flex; flex-wrap:wrap; gap:1em;}
-        .property {border:1px solid #ccc; padding:0.5em; width:300px; box-sizing:border-box;}
-        .property img {width:100%; height:auto;}
-        .rating .star{cursor:pointer;color:#ccc;font-size:1.2em;}
-        .rating .star.filled{color:gold;}
-        .call, .whatsapp {display:inline-block; margin-right:0.5em; padding:0.3em 0.6em; background:#004d99; color:#fff; text-decoration:none; border-radius:4px;}
-        footer {background:#333; color:#fff; padding:1em; text-align:center;}
-        footer a {color:#fff; margin:0 0.5em; text-decoration:none;}
-    </style>
+  <meta charset="UTF-8" />
+  <title>UAQ Property Management</title>
 </head>
 <body>
-    <header>
-        <h1 data-i18n="title">محمد المستشار العقاري</h1>
-        <button id="langToggle">EN</button>
-    </header>
-
-    <section id="about">
-        <h2 data-i18n="aboutTitle">من أنا</h2>
-        <p data-i18n="aboutText">أنا محمد، مستشار عقاري بخبرة تزيد عن 7 سنوات في أم القيوين وأقدم جميع الخدمات العقارية.</p>
-    </section>
-
-    <section id="services">
-        <h2 data-i18n="servicesTitle">الخدمات</h2>
-        <ul>
-            <li data-i18n="service1">إدارة وتأجير جميع أنواع العقارات</li>
-            <li data-i18n="service2">استشارات عقارية متكاملة</li>
-        </ul>
-    </section>
-
-    <section id="properties">
-        <h2 data-i18n="propertiesTitle">العقارات المتاحة</h2>
-        <input id="searchInput" placeholder="بحث" data-i18n-placeholder="searchPlaceholder">
-        <select id="typeFilter">
-            <option value="" data-i18n="all">الكل</option>
-            <option value="شقة" data-i18n="apt">شقق</option>
-            <option value="فيلا" data-i18n="villa">فلل</option>
-            <option value="أرض" data-i18n="land">أراضٍ</option>
-            <option value="محل" data-i18n="shop">محلات</option>
-        </select>
-        <div id="propertiesList"></div>
-    </section>
-
-    <section id="booking">
-        <h2 data-i18n="bookTitle">حجز موعد</h2>
-        <form id="bookingForm">
-            <label data-i18n="bookName">الاسم</label>
-            <input type="text" id="bookName" required>
-            <label data-i18n="bookPhone">الهاتف</label>
-            <input type="text" id="bookPhone" required>
-            <label data-i18n="bookProperty">العقار</label>
-            <select id="bookProperty"></select>
-            <label data-i18n="bookDate">التاريخ</label>
-            <input type="date" id="bookDate" required>
-            <button type="submit" data-i18n="bookSubmit">إرسال</button>
-        </form>
-    </section>
-
-    <section id="testimonials">
-        <h2 data-i18n="testimonialsTitle">شهادات العملاء</h2>
-        <p>"خدمة ممتازة وسريعة" - أحمد</p>
-        <p>"أفضل مستشار عقاري في أم القيوين" - فاطمة</p>
-    </section>
-
-    <section id="faq">
-        <h2 data-i18n="faqTitle">الأسئلة الشائعة</h2>
-        <p><a href="faq.html" data-i18n="faqLink">الأسئلة الشائعة</a></p>
-    </section>
-
-    <section id="contact">
-        <h2 data-i18n="contactTitle">تواصل معي</h2>
-        <a class="call" href="tel:0508911211" data-i18n="call">اتصل الآن</a>
-        <a class="whatsapp" href="https://wa.me/971508911211">واتساب</a>
-        <p>info@mohameduaqrealestate.com</p>
-    </section>
-
-    <section id="map">
-        <h2 data-i18n="mapTitle">موقعي</h2>
-        <iframe src="https://www.google.com/maps?q=Umm%20Al%20Quwain&output=embed" width="100%" height="300" style="border:0;"></iframe>
-    </section>
-
-    <footer>
-        <a href="privacy.html" data-i18n="privacyLink">سياسة الخصوصية</a>
-        <a href="login.html">دخول المشرف</a>
-    </footer>
-
-    <script src="main.js"></script>
+  <h1>UAQ Property Management</h1>
+  <p>Welcome to the new project.</p>
 </body>
 </html>
