@@ -1,0 +1,72 @@
+:root {
+  --brand-color: #C6A15B;
+  --text-color: #222;
+  --bg-color: #fff;
+  --font-ar: 'Cairo', 'IBM Plex Sans Arabic', sans-serif;
+  --font-en: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ar);
+  background: var(--bg-color);
+  color: var(--text-color);
+  direction: rtl;
+}
+
+body.en {
+  font-family: var(--font-en);
+  direction: ltr;
+}
+
+header, nav, footer {
+  padding: 1rem;
+  background: var(--bg-color);
+  border-bottom: 1px solid #eee;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--brand-color);
+  font-weight: 700;
+}
+
+.lang-toggle {
+  cursor: pointer;
+  background: var(--brand-color);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin: 1rem 0;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer {
+  text-align: center;
+  border-top: 1px solid #eee;
+  margin-top: 2rem;
+}
