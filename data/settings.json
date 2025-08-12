@@ -1,0 +1,9 @@
+{
+  "brand_color": "#C6A15B",
+  "default_language": "ar",
+  "whatsapp_number": "+971508911211",
+  "whatsapp_template_ar": "مرحبًا، مهتم بعقار: {title_ar} – المرجع: {id}. هل متاح للمعاينة؟",
+  "whatsapp_template_en": "Hello, I'm interested in: {title_en} – Ref: {id}. Is it available for a viewing?",
+  "featured_count": 3,
+  "areas": []
+}
