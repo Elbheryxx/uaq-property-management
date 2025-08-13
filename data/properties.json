@@ -1,0 +1,437 @@
+[
+  {
+    "id": 1,
+    "title_ar": "عقار 1",
+    "title_en": "Property 1",
+    "purpose": "sale",
+    "type": "villa",
+    "price": 50000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 2,
+    "baths": 2,
+    "area_sqm": 50,
+    "furnishing": "furnished",
+    "status": "available",
+    "year_built": 2016,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property1.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title_ar": "عقار 2",
+    "title_en": "Property 2",
+    "purpose": "rent",
+    "type": "studio",
+    "price": 100000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 3,
+    "baths": 3,
+    "area_sqm": 100,
+    "furnishing": "unfurnished",
+    "status": "available",
+    "year_built": 2017,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property2.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title_ar": "عقار 3",
+    "title_en": "Property 3",
+    "purpose": "sale",
+    "type": "office",
+    "price": 150000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 4,
+    "baths": 1,
+    "area_sqm": 150,
+    "furnishing": "furnished",
+    "status": "available",
+    "year_built": 2018,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property3.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": true
+  },
+  {
+    "id": 4,
+    "title_ar": "عقار 4",
+    "title_en": "Property 4",
+    "purpose": "rent",
+    "type": "apartment",
+    "price": 200000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 5,
+    "baths": 2,
+    "area_sqm": 200,
+    "furnishing": "unfurnished",
+    "status": "available",
+    "year_built": 2019,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property4.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "title_ar": "عقار 5",
+    "title_en": "Property 5",
+    "purpose": "sale",
+    "type": "villa",
+    "price": 250000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 1,
+    "baths": 3,
+    "area_sqm": 250,
+    "furnishing": "furnished",
+    "status": "available",
+    "year_built": 2020,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property5.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title_ar": "عقار 6",
+    "title_en": "Property 6",
+    "purpose": "rent",
+    "type": "studio",
+    "price": 300000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 2,
+    "baths": 1,
+    "area_sqm": 300,
+    "furnishing": "unfurnished",
+    "status": "available",
+    "year_built": 2021,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property6.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": false
+  },
+  {
+    "id": 7,
+    "title_ar": "عقار 7",
+    "title_en": "Property 7",
+    "purpose": "sale",
+    "type": "office",
+    "price": 350000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 3,
+    "baths": 2,
+    "area_sqm": 350,
+    "furnishing": "furnished",
+    "status": "available",
+    "year_built": 2022,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property7.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": false
+  },
+  {
+    "id": 8,
+    "title_ar": "عقار 8",
+    "title_en": "Property 8",
+    "purpose": "rent",
+    "type": "apartment",
+    "price": 400000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 4,
+    "baths": 3,
+    "area_sqm": 400,
+    "furnishing": "unfurnished",
+    "status": "available",
+    "year_built": 2023,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property8.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": false
+  },
+  {
+    "id": 9,
+    "title_ar": "عقار 9",
+    "title_en": "Property 9",
+    "purpose": "sale",
+    "type": "villa",
+    "price": 450000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 5,
+    "baths": 1,
+    "area_sqm": 450,
+    "furnishing": "furnished",
+    "status": "available",
+    "year_built": 2024,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property9.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": false
+  },
+  {
+    "id": 10,
+    "title_ar": "عقار 10",
+    "title_en": "Property 10",
+    "purpose": "rent",
+    "type": "studio",
+    "price": 500000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 1,
+    "baths": 2,
+    "area_sqm": 500,
+    "furnishing": "unfurnished",
+    "status": "available",
+    "year_built": 2025,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property10.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": false
+  },
+  {
+    "id": 11,
+    "title_ar": "عقار 11",
+    "title_en": "Property 11",
+    "purpose": "sale",
+    "type": "office",
+    "price": 550000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 2,
+    "baths": 3,
+    "area_sqm": 550,
+    "furnishing": "furnished",
+    "status": "available",
+    "year_built": 2026,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property11.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": false
+  },
+  {
+    "id": 12,
+    "title_ar": "عقار 12",
+    "title_en": "Property 12",
+    "purpose": "rent",
+    "type": "apartment",
+    "price": 600000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 3,
+    "baths": 1,
+    "area_sqm": 600,
+    "furnishing": "unfurnished",
+    "status": "available",
+    "year_built": 2027,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property12.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": false
+  },
+  {
+    "id": 13,
+    "title_ar": "عقار 13",
+    "title_en": "Property 13",
+    "purpose": "sale",
+    "type": "villa",
+    "price": 650000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 4,
+    "baths": 2,
+    "area_sqm": 650,
+    "furnishing": "furnished",
+    "status": "available",
+    "year_built": 2028,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property13.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": false
+  },
+  {
+    "id": 14,
+    "title_ar": "عقار 14",
+    "title_en": "Property 14",
+    "purpose": "rent",
+    "type": "studio",
+    "price": 700000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 5,
+    "baths": 3,
+    "area_sqm": 700,
+    "furnishing": "unfurnished",
+    "status": "available",
+    "year_built": 2029,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property14.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": false
+  },
+  {
+    "id": 15,
+    "title_ar": "عقار 15",
+    "title_en": "Property 15",
+    "purpose": "sale",
+    "type": "office",
+    "price": 750000,
+    "currency": "AED",
+    "location": "Umm Al Quwain",
+    "beds": 1,
+    "baths": 1,
+    "area_sqm": 750,
+    "furnishing": "furnished",
+    "status": "available",
+    "year_built": 2030,
+    "service_charges": 0,
+    "parking": 1,
+    "view": "city",
+    "available_from": "2024-01-01",
+    "images": [
+      "assets/images/property15.jpg"
+    ],
+    "amenities": [
+      "pool"
+    ],
+    "description_ar": "وصف placeholder",
+    "description_en": "Placeholder description",
+    "featured": false
+  }
+]
